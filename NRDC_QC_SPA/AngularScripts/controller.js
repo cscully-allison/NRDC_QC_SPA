@@ -20,9 +20,9 @@
 
 
 
-        /***********************
+        /************************
         Function Definitions
-        ************************/
+        *************************/
 
         vm.test = function () {
             console.log("Does the controller come over");
@@ -150,7 +150,8 @@
     function (dataService, $scope) {
         var vm = this;
 
-        $scope.options = {
+
+        vm.options = {
             chart: {
                 type: 'lineChart',
                 height: 450,
@@ -207,7 +208,7 @@
         };
 
 
-        $scope.data = genData();
+        vm.data = genData();
        
 
         function genData() {
@@ -226,7 +227,5 @@
             ]
 
         }
-
-        $scope.test = "is this bound?";
     }
 ])

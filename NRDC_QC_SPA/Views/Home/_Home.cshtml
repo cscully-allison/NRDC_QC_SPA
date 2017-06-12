@@ -2,9 +2,9 @@
 <br />
 <br />
 <div ng-app="QCSpaCore" class="col-lg-12">
-    <div ng-controller="lineGraphController">
-        <nvd3 options="options" data="data"></nvd3>
-        <div>{{test}}</div>
+    <div ng-controller="lineGraphController as LGC">
+        <nvd3 options="LGC.options" data="LGC.data"></nvd3> 
+<!--        <nrdc-chart-module></nrdc-chart-module>-->
     </div>
 </div>
 

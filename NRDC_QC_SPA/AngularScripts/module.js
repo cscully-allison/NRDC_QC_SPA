@@ -1,6 +1,7 @@
 ﻿angular.module('QCSpaCore', ['ngRoute', 'nvd3'])
 
 .config(function ($routeProvider, $locationProvider) {
+
     $routeProvider
         .when('/Graph', {
             templateUrl: 'Home/GraphView/',
