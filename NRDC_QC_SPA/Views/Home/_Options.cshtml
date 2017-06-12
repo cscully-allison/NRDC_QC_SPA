@@ -1,0 +1,4 @@
+﻿<button ng-repeat="row in HPNC.navData[HPNC.liveNavService.currentLevel]" 
+        ng-click="HPNC.fetchNextDataSet[HPNC.liveNavService.getChildLevel()](row.Name);
+                    HPNC.liveNavService.incrementLevel()">
+        {{row.Name}}</button>
