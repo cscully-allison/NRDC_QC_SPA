@@ -150,17 +150,16 @@
     function (dataService, $scope) {
         var vm = this;
 
-
         vm.options = {
             chart: {
                 type: 'lineChart',
-                height: 450,
-                margin: {
-                    top: 20,
-                    right: 20,
-                    bottom: 40,
-                    left: 55
-                },
+                //height: 450,
+                //margin: {
+                //    top: 20,
+                //    right: 20,
+                //    bottom: 40,
+                //    left: 55
+                //},
                 x: function (d) { return d.x; },
                 y: function (d) { return d.y; },
                 useInteractiveGuideline: true,
@@ -187,7 +186,8 @@
             title: {
                 enable: true,
                 text: 'Title for Line Chart'
-            },
+            }
+            /*
             subtitle: {
                 enable: true,
                 text: 'Subtitle for simple line chart. Lorem ipsum dolor sit amet, at eam blandit sadipscing, vim adhuc sanctus disputando ex, cu usu affert alienum urbanitas.',
@@ -204,6 +204,7 @@
                     'margin': '10px 13px 0px 7px'
                 }
             }
+            */
 
         };
 
