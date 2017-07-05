@@ -1,0 +1,11 @@
+﻿<div class="flags shadow" ng-controller='flagListController as FLC'>
+    <div ng-click="setPath()"><h1>Unhandled Flags</h1></div>
+    <div>
+        <ul>
+            <li class="flag-lv-one" ng-repeat="flag in FLC.flags"><h2>{{flag.Deployment}}</h2></li>
+        </ul>
+    </div>
+</div>
+<div class="full-width-element element-bg shadow" ng-controller="chartViewController"><nrdc-line-chart chart-data="queriedData"></nrdc-line-chart></div>
+
+<div class="full-width-element"></div>

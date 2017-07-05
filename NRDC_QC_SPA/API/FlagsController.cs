@@ -1,29 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web.Mvc;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
 using NRDC.Projects.Models.GIDMIS;
-using NRDC_QC.APIs;
-using NRDC_QC_SPA.Models;
+using Newtonsoft.Json;
 
-namespace NRDC_QC_SPA.Controllers
+namespace NRDC_QC.APIs
 {
-    //[Authorize]
-    public class HomeController : Controller
+    public class FlagsController : ApiController
     {
-        public ActionResult Index()
-        { 
-            ViewBag.databaseOptions = new string [] {"ProtoNRDC", "NRDC"};
-            ViewBag.Title = "NRDC";
-            return View();
-        }
-
-        //partial view on main page is sent through here
-        // so I can query for flag data and even specific user data in this controller
-        public ActionResult Dashboard()
+        // /{dbName}/flags/
+        public HttpResponseMessage Get(string DBName)
         {
             ConnectionHelper conn = new ConnectionHelper();
             List<object> flags = new List<object>();
+            string json;
 
 
             using (var db = new GIDMISContainer(conn.getConnectionString("protoNRDC")))
@@ -34,11 +27,11 @@ namespace NRDC_QC_SPA.Controllers
                                 MES.L1_Flag != null
                              && MES.Controlled_Value == null
                              && MES.Data_Streams.Data_Interval.Minutes == 10
-                             select new { MES, ONEQC } ).Take(100);
+                             select new { MES, ONEQC }).Take(100);
 
                 foreach (var row in table)
                 {
-                    flags.Add(new FlagViewModel() {
+                    flags.Add(new{
                         QCLV1 = row.MES.L1_Flag,
                         QCLV2 = row.MES.L2_Flag,
                         DataStreamId = row.MES.Stream,
@@ -51,18 +44,11 @@ namespace NRDC_QC_SPA.Controllers
                     });
                 }
 
+                json = JsonConvert.SerializeObject(flags);
 
-                ViewBag.flags = flags;
-
+                return conn.BuildJsonResponse(json);
             }
 
-
-
-            return PartialView("~/Views/Home/_Dashboard.cshtml");
-
-
-
         }
-
     }
 }

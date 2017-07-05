@@ -1,29 +1,23 @@
-﻿body {
+﻿/*
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
 
-/* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
 .dl-horizontal dt {
     white-space: normal;
 }
-
-/* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
     max-width: 280px;
 }
 
-/* Set padding to display errors that occur during databinding */
 .padding-error {
     padding-top: 20px;
 }
@@ -33,4 +27,135 @@ textarea {
         float: none;
         padding: 10px 15px;
     }
+}
+
+*/
+
+*{box-sizing: border-box;}
+
+h2{
+    margin: 0.0px;
+}
+
+html, body {
+    width:100%;
+    height:100%;
+    margin:0;
+}
+
+ul, li{
+    /*clear style*/
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+a{
+    text-decoration: none;
+    margin: 0.0px;
+    color: rgba(50, 50, 50, .85);
+}
+
+#body{
+  display: grid;
+  grid-template-columns: 2fr 8fr;
+  width:100%;
+  height:100%;
+}
+
+.sidebar{
+  grid-column: 1;
+
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr;
+  grid-auto-rows: 50px;
+
+  background-color: #737373;
+  box-shadow: 5px 5px 5px rgba(100, 100, 100, .4);
+}
+
+
+.content-wrapper{
+  padding: 30px;
+  
+  grid-column: 2/3;
+
+
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-auto-rows: 220px;
+  grid-gap: 10px;
+}
+
+.content-wrapper > .shadow {
+  box-shadow: 5px 5px 5px rgba(100,100,100, .4);
+}
+
+.flags{
+   background-color: rgba(245, 245, 245, 1.0);
+   grid-column: 1/9;
+   grid-row: 1/3; 
+   height: 100%;
+   width: 100%;
+   margin-bottom: 20px;
+   overflow-y: scroll;
+}
+
+.flags > div{
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.flags {
+    -ms-overflow-style: none;  
+    overflow: -moz-scrollbars-none; 
+}
+
+.flags::-webkit-scrollbar { 
+    display: none;  
+}
+
+.flags > div > ul > li {
+  min-height: 50px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  box-shadow: 5px 5px 5px rgba(100,100,100, .4);
+
+  padding-left: 10px;
+}
+
+.flag-lv-one{
+    background-color:rgba(255,75,75, 1.0);
+    padding-top: .8em;
+}
+
+
+.flag-lv-two{
+    background-color:rgba(255,150,75, 1.0);
+}
+
+.full-width-element{
+   grid-column: 1 / -1;
+}
+
+.two-row-element{
+    grid-row: auto / span 2;
+}
+
+.three-row-element{
+    grid-row: auto / span 3
+}
+
+.four-row-element{
+    grid-row: auto / span 4;
+}
+
+.element-bg{
+   background-color: rgba(245, 245, 245, 1.0);
+}
+
+.line{
+    fill: none;
+    stroke-width: 2px;
+    stroke: rgba(20,20,200,1.0);
 }

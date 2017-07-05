@@ -1,3 +1,12 @@
-﻿<body ng-controller="ChartViewController">
-    <h1>{{TestString}}</h1>
-</body>
+﻿<div 
+     ng-init="CVC.injectDataContext(@ViewBag.SID, '@ViewBag.StartTime', '@ViewBag.EndTime');" 
+     class="full-width-element 
+            three-row-element 
+            element-bg shadow">
+    <nrdc-line-chart chart-data="CVC.queriedData"></nrdc-line-chart>
+</div>
+<h1>{{CVC.dataContext.DataStreamId}}</h1>
+<h1>{{CVC.dataContext.StartTime}}</h1>
+<h1>{{CVC.dataContext.EndTime}}</h1>
+
+

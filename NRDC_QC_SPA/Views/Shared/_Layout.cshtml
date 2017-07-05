@@ -5,12 +5,13 @@
     <title>@ViewBag.Title - NRDC QC Dashboard</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/Site.css")
     @Scripts.Render("~/bundles/d3")
 
 
 </head>
 <body>
+<!--
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -30,17 +31,27 @@
             </div>
         </div>
     </div>
+    -->
     <div class="container body-content">
-        @RenderBody()
-        @RenderSection("SPAViews", required: false)
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - @ViewBag.title</p>
-        </footer>
+        <div ng-app="QCSpaCore">
+            <div id="body">
+                <div class="sidebar">
+                </div>
+                @RenderBody()
+                @RenderSection("SPAViews", required: false)
+            </div>
+        </div>
     </div>
-    @Scripts.Render("~/bundles/angular")
-    @Scripts.Render("~/bundles/nvd3")
-    @Scripts.Render("~/bundles/AngularScripts")
-    @RenderSection("Scripts", required: false)
+<!--
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - @ViewBag.title</p>
+                </footer>
+            </div>
+
+-->
+            @Scripts.Render("~/bundles/angular")
+            @Scripts.Render("~/bundles/AngularScripts")
+            @RenderSection("Scripts", required: false)
 </body>
 </html>

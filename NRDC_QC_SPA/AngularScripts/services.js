@@ -41,9 +41,38 @@
         )
     }
 
+    /**
+     * This function will be the primary interface between angular controller
+     * and meaasurements api. Should contruct a http string using db name, api name
+     * and options 
+     * @param {string} api - the name of the api being called eg. 'meausrements'
+     * @param {string} dbName - the name of the database being queried
+     * @param {object} options - jsonObject containing additional data to add to the query 
+     * @param {function} callback - callbackFunction evoked to return the data from this function  
+     * @param {function} errorCallback - callback function evoked under circumstances of an error
+     *
+     */
     this.getFromAPIWithOptions = function (api, dbName, options, callback, errorCallBack) {
-        //this will be used principally for
-        // calls to database data
+        var httpString = '/api/' + api + '/' + dbName + '/?';
+
+        for (var option in options) {
+            if(options.hasOwnProperty(option)){
+                httpString += (option + '=' + options[option] + '&');
+            }
+        }
+
+        $http.get(httpString)
+        .then(
+          function (returned) {
+              callback(returned);
+          },
+          function (error) {
+              errorCallBack(error);
+          }
+      )
+
+        
+
     }
 
 

@@ -1,0 +1,14 @@
+﻿<div class="flags shadow" ng-controller='flagListController as FLC'>
+    <div><h1>Unhandled Flags</h1></div>
+    <div>
+        <ul>
+            <!--Displays each active flag that has been unhandled. The custom formating and nested string are necessary on second arg to setPath to prevent JS from throwing syntax error-->
+            @foreach (var flag in ViewBag.flags) {
+                  <li class="flag-lv-one" ng-click="setPath(@flag.DataStreamId, '@flag.TimeStamp.ToString("yyyy MM dd hh:mm:ss tt")')"><h2>@flag.FlagName - @flag.Site : @flag.System - @flag.Deployment</h2></li>
+            }
+        </ul>
+    </div>
+</div>
+<div class="full-width-element element-bg shadow" ng-controller="chartViewController as CVC"><nrdc-line-chart chart-data="CVC.queriedData"></nrdc-line-chart></div>
+
+<div class="full-width-element"></div>

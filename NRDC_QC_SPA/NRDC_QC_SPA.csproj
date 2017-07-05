@@ -185,6 +185,7 @@
     <Compile Include="API\DataTransferModels\DataStream.cs" />
     <Compile Include="API\DataTypesController.cs" />
     <Compile Include="API\DeploymentsController.cs" />
+    <Compile Include="API\FlagsController.cs" />
     <Compile Include="API\MeasurementsController.cs" />
     <Compile Include="API\PropertiesController.cs" />
     <Compile Include="API\SiteNetworksController.cs" />
@@ -234,6 +235,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\FlagViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MeViewModels.cs" />
@@ -244,6 +246,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AngularScripts\controller.js" />
+    <Content Include="AngularScripts\Directives\nrdc-binding.directive.js" />
+    <Content Include="AngularScripts\Directives\nrdc-line-chart.directive.js" />
     <Content Include="AngularScripts\services.js" />
     <Content Include="AngularScripts\module.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -257,8 +261,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\angular-mocks.js" />
-    <Content Include="Scripts\angular-nvd3.js" />
-    <Content Include="Scripts\angular-nvd3.min.js" />
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular-route.min.js" />
     <Content Include="Scripts\angular.js" />
@@ -287,10 +289,13 @@
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-route.min.js.map" />
     <Content Include="nvd3.license.md" />
+    <Content Include="AngularScripts\Directives\nrdc-chart-module.directive.js" />
     <Content Include="Scripts\d3\d3.js" />
     <Content Include="Scripts\d3\d3.min.js" />
+    <Content Include="Scripts\d3\README.md" />
     <Content Include="Scripts\d3\LICENSE" />
-    <Content Include="AngularScripts\Directives\nrdc-chart-module.directive.js" />
+    <Content Include="Scripts\d3\CHANGES.md" />
+    <Content Include="Scripts\d3\API.md" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -299,8 +304,6 @@
     <Content Include="Scripts\knockout.validation.debug.js" />
     <Content Include="Scripts\knockout.validation.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\nv.d3.js" />
-    <Content Include="Scripts\nv.d3.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\sammy-0.7.4.js" />
@@ -311,7 +314,7 @@
     <Content Include="Scripts\app\app.viewmodel.js" />
     <Content Include="Scripts\app\common.js" />
     <Content Include="Scripts\app\home.viewmodel.js" />
-    <Content Include="Content\Templates\nrdc-chart-module.directive.html" />
+    <Content Include="Content\Templates\_ChartView.html" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -349,8 +352,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Home\_Options.cshtml" />
     <Content Include="Views\Shared\_ChartView.cshtml" />
+    <Content Include="Views\Deployment\_DeploymentView.cshtml" />
+    <Content Include="Views\Home\_Dashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

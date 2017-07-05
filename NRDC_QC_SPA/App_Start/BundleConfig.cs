@@ -52,9 +52,7 @@ namespace NRDC_QC_SPA
             bundles.Add(new ScriptBundle("~/bundles/d3").Include(
                 "~/Scripts/d3/d3.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/nvd3").Include(
-                "~/Scripts/nv.d3.js",
-                "~/Scripts/angular-nvd3.js"));
+
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                  "~/Content/bootstrap.css",

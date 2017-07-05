@@ -145,88 +145,72 @@
 
 ])
 
-.controller('lineGraphController', ['dataService', '$scope',
+.controller('routeController', ['$location', '$scope',
 
-    function (dataService, $scope) {
-        var vm = this;
+    function ($location, $scope) {
 
-        vm.options = {
-            chart: {
-                type: 'lineChart',
-                //height: 450,
-                //margin: {
-                //    top: 20,
-                //    right: 20,
-                //    bottom: 40,
-                //    left: 55
-                //},
-                x: function (d) { return d.x; },
-                y: function (d) { return d.y; },
-                useInteractiveGuideline: true,
-                dispatch: {
-                    stateChange: function (e) { console.log("stateChange"); },
-                    changeState: function (e) { console.log("changeState"); },
-                    tooltipShow: function (e) { console.log("tooltipShow"); },
-                    tooltipHide: function (e) { console.log("tooltipHide"); }
-                },
-                xAxis: {
-                    axisLabel: 'Time (ms)'
-                },
-                yAxis: {
-                    axisLabel: 'Voltage (v)',
-                    tickFormat: function (d) {
-                        return d3.format('.02f')(d);
-                    },
-                    axisLabelDistance: -10
-                },
-                callback: function (chart) {
-                    console.log("!!! lineChart callback !!!");
-                }
-            },
-            title: {
-                enable: true,
-                text: 'Title for Line Chart'
-            }
-            /*
-            subtitle: {
-                enable: true,
-                text: 'Subtitle for simple line chart. Lorem ipsum dolor sit amet, at eam blandit sadipscing, vim adhuc sanctus disputando ex, cu usu affert alienum urbanitas.',
-                css: {
-                    'text-align': 'center',
-                    'margin': '10px 13px 0px 7px'
-                }
-            },
-            caption: {
-                enable: true,
-                html: '<b>Figure 1.</b> Lorem ipsum dolor sit amet, at eam blandit sadipscing, <span style="text-decoration: underline;">vim adhuc sanctus disputando ex</span>, cu usu affert alienum urbanitas. <i>Cum in purto erat, mea ne nominavi persecuti reformidans.</i> Docendi blandit abhorreant ea has, minim tantas alterum pro eu. <span style="color: darkred;">Exerci graeci ad vix, elit tacimates ea duo</span>. Id mel eruditi fuisset. Stet vidit patrioque in pro, eum ex veri verterem abhorreant, id unum oportere intellegam nec<sup>[1, <a href="https://github.com/krispo/angular-nvd3" target="_blank">2</a>, 3]</sup>.',
-                css: {
-                    'text-align': 'justify',
-                    'margin': '10px 13px 0px 7px'
-                }
-            }
-            */
-
-        };
-
-
-        vm.data = genData();
-       
-
-        function genData() {
-            sinWave = [];
-
-            for (var i = 0; i < 100; i++) {
-                sinWave.push({ x: i, y: Math.sin(i / 10) });
-            }
-
-            return [
-                {
-                    values: sinWave,
-                    key: "Sin Wave",
-                    color: '#c0ffee'
-                }
-            ]
+        $scope.setPath = function (StreamID, TimeStamp) {
+            $location.path('Graph/' + StreamID + '/' + TimeStamp);
 
         }
+
+        var initPath = function () {
+            $location.path('Home/');
+        }
+
+        initPath();
     }
 ])
+
+
+.controller('flagListController', ['dataService', function (dataService) {
+    var vm = this;
+
+    //options for querying for flags
+    var options = {}
+    vm.flags = []
+
+
+
+    dataService.getFromAPIWithOptions('flags', 'protoNRDC', options,
+            function (response) {
+                vm.flags = response.data;
+            },
+            function (e) { console.log(e); }
+        );
+
+}])
+
+.controller('chartViewController', [ '$scope', 'dataService', function ($scope, dataService) {
+    var vm = this;
+    vm.dataContext = {
+    };
+    var options = {
+        DataStreamId: '54',
+        StartTime: '2014-06-15 04:00:00',
+        EndTime: '2014-06-22 05:00:00'
+    };
+
+    vm.queriedData = { data: [] };
+
+
+    vm.injectDataContext = function (DataStreamId, StartTime, EndTime) {
+        vm.dataContext.DataStreamId = DataStreamId;
+        vm.dataContext.StartTime = StartTime;
+        vm.dataContext.EndTime = EndTime;
+
+        console.log(vm.queriedData);
+
+        //get data using the current context
+        dataService.getFromAPIWithOptions('measurements', 'protoNRDC', vm.dataContext,
+            function (response) {
+                vm.queriedData.data = response.data;
+            },
+            function (e) {
+                console.log(e);
+            }
+        );
+
+    }
+
+}])

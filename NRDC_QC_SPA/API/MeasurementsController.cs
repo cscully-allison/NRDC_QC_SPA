@@ -22,7 +22,7 @@ namespace NRDC_QC.APIs
                 using (var db = new GIDMISContainer(conn.getConnectionString(DBName)))
                 {
                     var table = (from x in db.Measurements
-                                select x).Take(1000);
+                                select x).Take(10000);
                     foreach (var row in table)
                     {
                         formattedRows.Add(new
@@ -62,9 +62,9 @@ namespace NRDC_QC.APIs
             {
                 using (var db = new GIDMISContainer(conn.getConnectionString(DBName)))
                 {
-                    var table = from x in db.Measurements
+                    var table = (from x in db.Measurements
                                 where x.Stream == id
-                                select x;
+                                select x).Take(10000);
                     foreach (var row in table)
                     {
                         formattedRows.Add(new
@@ -90,6 +90,16 @@ namespace NRDC_QC.APIs
             return conn.BuildJsonResponse(json);
         }
 
+
+        /// <summary>
+        ///     This provides the main driver for data queries. If I have a measurement (from a flag) or a deployment, I can query data from those deployments
+        ///     or measurements 
+        /// </summary>
+        /// <param name="DBName">The name of the database being quiered eg. "protonrdc"</param>
+        /// <param name="DataStreamId">The id of the data stream being queried. Taken from a flagged measurement or an associated deployment.</param>
+        /// <param name="StartTime">The datetime of the first measurement in the query (exclusive)</param>
+        /// <param name="EndTime">The datetime of the last measurement in the query (inclusive)</param>
+        /// <returns>JSON </returns>
         public HttpResponseMessage Get(string DBName, int DataStreamId, DateTime StartTime, DateTime EndTime)
         {
             ConnectionHelper conn = new ConnectionHelper();
@@ -136,6 +146,7 @@ namespace NRDC_QC.APIs
 
             return conn.BuildJsonResponse(json);
         }
+
 
 
     }
