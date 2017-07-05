@@ -1,0 +1,16 @@
+C:\Users\hmunoz\Desktop\Flagging Service\Flagging Service\MyNewService\bin\Debug\NRDC_QC_Flagging_Service.exe.config
+C:\Users\hmunoz\Desktop\Flagging Service\Flagging Service\MyNewService\bin\Debug\NRDC_QC_Flagging_Service.exe
+C:\Users\hmunoz\Desktop\Flagging Service\Flagging Service\MyNewService\bin\Debug\NRDC_QC_Flagging_Service.pdb
+C:\Users\hmunoz\Desktop\Flagging Service\Flagging Service\MyNewService\bin\Debug\EntityFramework.dll
+C:\Users\hmunoz\Desktop\Flagging Service\Flagging Service\MyNewService\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\hmunoz\Desktop\Flagging Service\Flagging Service\MyNewService\bin\Debug\GIDMIS.dll
+C:\Users\hmunoz\Desktop\Flagging Service\Flagging Service\MyNewService\bin\Debug\GIDMIS.pdb
+C:\Users\hmunoz\Desktop\Flagging Service\Flagging Service\MyNewService\bin\Debug\GIDMIS.dll.config
+C:\Users\hmunoz\Desktop\Flagging Service\Flagging Service\MyNewService\bin\Debug\EntityFramework.xml
+C:\Users\hmunoz\Desktop\Flagging Service\Flagging Service\MyNewService\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\hmunoz\Desktop\Flagging Service\Flagging Service\MyNewService\obj\Debug\NRDC_QC_Flagging_Service.csprojResolveAssemblyReference.cache
+C:\Users\hmunoz\Desktop\Flagging Service\Flagging Service\MyNewService\obj\Debug\NRDC_QC_Flagging_Service.csproj.GenerateResource.Cache
+C:\Users\hmunoz\Desktop\Flagging Service\Flagging Service\MyNewService\obj\Debug\NRDC_QC_Flagging_Service.exe
+C:\Users\hmunoz\Desktop\Flagging Service\Flagging Service\MyNewService\obj\Debug\NRDC_QC_Flagging_Service.pdb
+C:\Users\hmunoz\Desktop\Flagging Service\Flagging Service\MyNewService\obj\Debug\FlaggingService.ProjectInstaller.resources
+C:\Users\hmunoz\Desktop\Flagging Service\Flagging Service\MyNewService\obj\Debug\FlaggingService.NRDC_QC_Flagging_Service.resources
